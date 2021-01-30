@@ -1,6 +1,11 @@
 <template>
-  <div class="hello bg-red-500 flex justify-center p-4">
+  <div class="flex justify-center p-4">
     {{ name }}
+    <!-- Header -->
+
+    <!-- Creation Bar -->
+
+    <!-- Request List -->
   </div>
 </template>
 
