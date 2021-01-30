@@ -4,7 +4,7 @@
     <div class="flex w-full h-12 border-b" id="request-bar">
       <form class="flex w-full" @submit.prevent="onSubmit">
         <select class="w-1/5 bg-white border-r pl-1" name="method" v-model="method">
-          <option value="get" selected="selected">GET</option>
+          <option value="get">GET</option>
           <option value="post">POST</option>
           <option value="patch">PATCH</option>
           <option value="delete">DELETE</option>
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       name: "Request",
-      method: "",
+      method: "get",
       url: ""
     }
   },
