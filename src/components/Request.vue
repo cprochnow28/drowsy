@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-left bg-white">
+  <div class="flex flex-col w-full justify-left">
     <!-- Request Bar -->
-    <div class="flex w-full h-12 border-b" id="request-bar">
+    <div class="flex w-full h-12 border-b border-gray-500 bg-white" id="request-bar">
       <form class="flex w-full" @submit.prevent="onSubmit">
         <select class="w-1/5 bg-white border-r pl-1" name="method" v-model="method">
           <option value="get">GET</option>
@@ -18,7 +18,15 @@
 
     <!-- Message Bar -->
 
+    <div class="flex w-full h-12 border-b border-gray-500 bg-white" id="message-bar">
+
+    </div>
+
     <!-- Body -->
+
+    <div class="flex w-full h-full" id="body">
+
+    </div>
   </div>
 </template>
 

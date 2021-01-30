@@ -1,7 +1,7 @@
 <template>
-  <div class="flex w-full h-full min-h-screen">
-    <Requests class="w-1/5 box-border border-r border-gray-200"/>
-    <Request class="w-2/5 box-border border-r border-gray-200"/>
+  <div class="flex w-full h-full min-h-screen bg-charcoal-800">
+    <Requests class="w-1/5 box-border border-r border-gray-500"/>
+    <Request class="w-2/5 box-border border-r border-gray-500"/>
     <Response class="w-2/5"/>
   </div>
 </template>
