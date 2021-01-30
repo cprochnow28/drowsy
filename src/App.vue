@@ -1,7 +1,9 @@
 <template>
-  <Request/>
-  <Response/>
-  <Requests/>
+  <div class="flex w-full h-full">
+    <Requests class="w-1/5 border-r"/>
+    <Request class="w-2/5 border-r"/>
+    <Response class="w-2/5"/>
+  </div>
 </template>
 
 <script>

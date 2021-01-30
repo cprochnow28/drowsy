@@ -1,6 +1,6 @@
 <template>
   <div class="hello bg-red-500 flex justify-center p-4">
-    {{ msg }}
+    {{ name }}
   </div>
 </template>
 
@@ -8,10 +8,10 @@
 export default {
   name: 'Request',
   props: {
-    msg: {
-      type: String,
-      required: false,
-      default: "Hello"
+  },
+  data() {
+    return {
+      name: "Request"
     }
   }
 }
