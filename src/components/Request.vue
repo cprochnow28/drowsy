@@ -21,17 +21,24 @@
 
     <div class="flex w-full h-12 border-b border-gray-500 bg-white" id="message-bar">
       <select class="w-1/5 border-r pl-1 bg-white" id="body-type" @focus="resetBodyType" v-model="bodyType">
-        <option value="" disabled hidden>Body</option>
+        <option value="" disabled hidden>Body Type</option>
         <option value="XML">XML</option>
         <option value="JSON">JSON</option>
       </select>
+      <button type="button" class="px-2" id="headers-toggle-button" @click="toggleHeaders" v-text="headersToggleText"></button>
     </div>
 
-    <!-- Body -->
+    <!-- Message -->
+    <div id="message" class="w-full h-full">
+      <!-- Body -->
+      <textarea class="flex w-full h-full p-4 text-white bg-transparent" v-model="body" id="body">
 
-    <textarea class="flex w-full h-full p-4 text-white bg-transparent" v-model="body" id="body">
+      </textarea>
+      <!-- Header -->
+      <textarea class="hidden flex w-full h-full p-4 text-white bg-transparent" v-model="headers" id="headers">
 
-    </textarea>
+      </textarea>
+    </div>
 
     </form>
   </div>
@@ -48,7 +55,9 @@ export default {
       method: "GET",
       url: "",
       bodyType: "",
-      body: ""
+      body: "",
+      headers: "",
+      headersToggleText: "Body"
     }
   },
   methods: {
@@ -63,8 +72,30 @@ export default {
         alert(`Please Provide a body type.`);
       } else {
         console.log("Submitted!");
+        let data = {
+          "lol": "memes",
+          "dreams": {
+          "themes": "hemes"
+          },
+          "LolDude": "YallDude"
+        }
+        console.log(data);
         alert(`Submitted!\n\nMethod: ${this.method}\nURL: ${this.url}\nBody Type: ${this.bodyType}`)
         console.log(this.body);
+        console.log(this.headers);
+      }
+    },
+    toggleHeaders() {
+      let headersElement = document.getElementById("headers");
+      let bodyElement = document.getElementById("body");
+      if (headersElement.classList.contains("hidden")) {
+        headersElement.classList.remove("hidden");
+        bodyElement.classList.add("hidden");
+        this.headersToggleText = "Headers";
+      } else {
+        headersElement.classList.add("hidden");
+        bodyElement.classList.remove("hidden");
+        this.headersToggleText = "Body";
       }
     },
     resetURL() {
