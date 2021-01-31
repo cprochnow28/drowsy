@@ -1,32 +1,39 @@
 <template>
-  <div class="flex flex-col w-full justify-left">
+  <div class="flex">
+    <form class="flex w-full flex-col" @submit.prevent="onSubmit">
     <!-- Request Bar -->
     <div class="flex w-full h-12 border-b border-gray-500 bg-white" id="request-bar">
-      <form class="flex w-full" @submit.prevent="onSubmit">
-        <select class="w-1/5 bg-white border-r pl-1" name="method" v-model="method">
-          <option value="get">GET</option>
-          <option value="post">POST</option>
-          <option value="patch">PATCH</option>
-          <option value="delete">DELETE</option>
+
+        <select class="w-1/5 border-r bg-white pl-1" name="method" v-model="method">
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PATCH">PATCH</option>
+          <option value="DELETE">DELETE</option>
         </select>
 
-        <input type="text" name="url" placeholder="API URL" class="w-3/5 pl-2 px-1" v-model="url">
+        <input type="text" id="url" name="url" @focus="resetURL" placeholder="API URL" class="w-3/5 pl-2 px-1" v-model="url">
 
         <button type="submit" class="rounded p-2 w-1/5">Send</button>
-      </form>
+
     </div>
 
     <!-- Message Bar -->
 
     <div class="flex w-full h-12 border-b border-gray-500 bg-white" id="message-bar">
-
+      <select class="w-1/5 border-r pl-1 bg-white" id="body-type" @focus="resetBodyType" v-model="bodyType">
+        <option value="" disabled hidden>Body</option>
+        <option value="XML">XML</option>
+        <option value="JSON">JSON</option>
+      </select>
     </div>
 
     <!-- Body -->
 
-    <div class="flex w-full h-full" id="body">
+    <textarea class="flex w-full h-full p-4 text-white bg-transparent" v-model="body" id="body">
 
-    </div>
+    </textarea>
+
+    </form>
   </div>
 </template>
 
@@ -38,15 +45,35 @@ export default {
   data() {
     return {
       name: "Request",
-      method: "get",
-      url: ""
+      method: "GET",
+      url: "",
+      bodyType: "",
+      body: ""
     }
   },
   methods: {
     onSubmit() {
-      console.log("Submitted!");
-      console.log(this.method);
-      console.log(this.url);
+      if (!this.url) {
+        document.getElementById("url").classList.add("border-red-500");
+        document.getElementById("url").classList.add("border-4");
+        alert(`Please Provide an API URL to ${this.method}`);
+      } else if (!this.bodyType) {
+        document.getElementById("body-type").classList.add("border-red-500");
+        document.getElementById("body-type").classList.add("border-4");
+        alert(`Please Provide a body type.`);
+      } else {
+        console.log("Submitted!");
+        alert(`Submitted!\n\nMethod: ${this.method}\nURL: ${this.url}\nBody Type: ${this.bodyType}`)
+        console.log(this.body);
+      }
+    },
+    resetURL() {
+      document.getElementById("url").classList.remove("border-4");
+      document.getElementById("url").classList.remove("border-red-500");
+    },
+    resetBodyType() {
+      document.getElementById("body-type").classList.remove("border-4");
+      document.getElementById("body-type").classList.remove("border-red-500");
     }
   }
 }
