@@ -61,7 +61,7 @@ export default {
       bodyType: "",
       body: "",
       headers: "",
-      headerType: "",
+      headerType: "JSON",
       headersToggleText: "Body"
     }
   },

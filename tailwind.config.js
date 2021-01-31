@@ -12,7 +12,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      backgroundColor: ['first'],
+      backgroundColor: ['first', 'active'],
     },
   },
   plugins: [],

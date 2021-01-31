@@ -24,7 +24,7 @@
     <!-- Request List -->
     <div class="flex mt-2 w-full" id="requestList">
       <ul class="w-full">
-        <li v-for="request in requests" :key="request" class="first:bg-charcoal-600 w-full pl-4 h-8 flex items-center">
+        <li v-for="request in requests" :key="request" @click="setActiveFile" :class="`w-full pl-4 h-8 flex items-center ${activeFile === request.title ? 'bg-charcoal-600' : ''}`">
           {{ request.title }}
         </li>
       </ul>
@@ -35,17 +35,26 @@
 <script>
 export default {
   name: "Requests",
-  props: {},
+  props: {
+  },
   data() {
     return {
       requestName: "",
       requests: [],
+      activeFile: ""
     };
   },
   methods: {
     onSubmit() {
-      this.requests.push({ title: this.requestName });
+      if (!this.requests.some(request => request.title === this.requestName)) {
+        this.requests.push({ title: this.requestName });
+        this.activeFile = this.requestName;
+      }
+      this.requestName = "";
     },
+    setActiveFile(event) {
+      this.activeFile = event.target.innerHTML;
+    }
   },
 };
 </script>
