@@ -24,7 +24,7 @@
     <!-- Request List -->
     <div class="flex mt-2 w-full" id="requestList">
       <ul class="w-full">
-        <li v-for="request in requests" :key="request" class="bg-charcoal-600 w-full pl-4 h-8 flex items-center">
+        <li v-for="request in requests" :key="request" class="first:bg-charcoal-600 w-full pl-4 h-8 flex items-center">
           {{ request.title }}
         </li>
       </ul>
